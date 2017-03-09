@@ -1,15 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <body>
-    <form action="." method="POST">
+	<h1>Input Data</h1>
+    <form action="/data" method="POST">
 		Enter Freeway:<br>
-        <input type="number" name="freeway">
+        <input type="text" name="freeway">
 		Choose direction (N or W =0, S or E = 1):<br>
-		<input type="number" name="dir">
+		<input type="text" name="dir">
 		Choose day (Monday = 1, Sunday = 7):<br>
-		<input type="number" name="day">
+		<input type="text" name="day">
 		Enter time (Military Time):<br>
-		<input type="number" name="time">
+		<input type="text" name="time">
+		Enter amount of traffic:
+		<input type="text" name="traffic">
+        <input type="submit" value="Send">
+    </form>
+
+	<h2>Input data to Predict Traffic</h2>
+	<form action="/predict" method="POST">
+		Enter Freeway:<br>
+        <input type="text" name="freeway">
+		Choose direction (N or W =0, S or E = 1):<br>
+		<input type="text" name="dir">
+		Choose day (Monday = 1, Sunday = 7):<br>
+		<input type="text" name="day">
+		Enter time (Military Time):<br>
+		<input type="text" name="time">
         <input type="submit" value="Send">
     </form>
 </body>
