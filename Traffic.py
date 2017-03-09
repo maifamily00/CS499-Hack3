@@ -1,15 +1,15 @@
 from sklearn import linear_model
 
-from flask import Flask, request, render_template
-app = Flask(__name__)
+from flask import Flask, request
+app = Flask(__name__, static_url_path='')
 
 input_freeway = list()
 output_freeway = list()
 
 
 @app.route('/')
-def index():
-    return render_template('hack.html')
+def root():
+    return app.send_static_file('hack.html')
 
 @app.route('/data', methods=['POST'])
 def data():
@@ -24,9 +24,9 @@ def data():
     output_freeway.append([traffic])
 
 
-    return render_template('hack.html')
+    return app.send_static_file('hack.html')
 
-@app.route('/predict', methods=['POST'])
+@app.route('/predict', methods=['GET','POST'])
 def predict():
 
     reg = linear_model.LinearRegression()
@@ -41,5 +41,5 @@ def predict():
     return str(traffic)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run(host='0.0.0.0')
